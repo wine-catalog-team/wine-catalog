@@ -1,4 +1,4 @@
-name: CI
+name: CI (triggered by ${{ github.actor }})
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   build-and-test:
+    name: Build and test (triggered by ${{ github.actor }})
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
