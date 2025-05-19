@@ -1,4 +1,4 @@
-name: CI (triggered by ${{ github.actor }})
+name: CI
 
 on:
   push:
