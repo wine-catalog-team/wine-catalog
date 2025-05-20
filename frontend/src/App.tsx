@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
 
 const App = () => {
-  const [count, setCount] = useState<number>(0);
-
-  return <h1 onClick={() => setCount(count + 1)}>Hello world! {count}</h1>;
+  return (
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
+  );
 };
 
 export default App;
