@@ -4,16 +4,18 @@ import styles from './Header.module.scss';
 const Header = () => {
   return (
     <header className={styles.header}>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">HomePage</Link>
-          </li>
-          <li>
-            <Link to="/catalog">CatalogPage</Link>
-          </li>
-        </ul>
-      </nav>
+      <div className="container">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">HomePage</Link>
+            </li>
+            <li>
+              <Link to="/catalog">CatalogPage</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 };
