@@ -2,6 +2,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import gettext as _
 
+
 class Wine(models.Model):
     type = models.CharField(max_length=120)
     grape_variety = models.CharField(max_length=120)
@@ -16,6 +17,8 @@ class Wine(models.Model):
     aroma = models.CharField(max_length=120)
     taste = models.CharField(max_length=120)
     color = models.CharField(max_length=120)
+    description = models.TextField(blank=True, null=True)
+    short_description = models.CharField(max_length=120, blank=True, null=True)
 
     class Meta:
         verbose_name = _("Wine")
