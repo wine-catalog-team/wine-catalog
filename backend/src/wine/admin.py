@@ -19,4 +19,6 @@ class WineAdmin(admin.ModelAdmin):
         "aroma",
         "taste",
         "color",
+        "description",
+        "short_description",
     ]
