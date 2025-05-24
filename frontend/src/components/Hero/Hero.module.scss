@@ -10,7 +10,7 @@
   background-image: url('./img/hero-bg.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   text-align: center;
 
   & h1 {
@@ -36,13 +36,17 @@
     width: fit-content;
     margin-inline: auto;
     padding: 16px 10px;
-    font-size: 14px;
     font-weight: 500;
     line-height: 120%;
     text-transform: uppercase;
     border-radius: 2px;
     background-color: $primary-bg-color;
     color: $hero-color;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      background-color: $primary-bg-color-hover;
+    }
   }
 }
 
@@ -51,4 +55,20 @@
   inset: 0;
   z-index: -1;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    & h1 {
+      font-size: 180px;
+    }
+
+    & p {
+      font-size: 20px;
+    }
+
+    & a {
+      padding: 16px 31px;
+    }
+  }
 }
