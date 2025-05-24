@@ -1,3 +1,4 @@
+import AboutOwner from '../../components/AboutOwner';
 import AboutUs from '../../components/AboutUs';
 import AboutWine from '../../components/AboutWine';
 import Branch from '../../components/Branch';
@@ -11,6 +12,7 @@ const HomePage = () => {
       <AboutUs />
       <Branch />
       <AboutWine />
+      <AboutOwner />
     </div>
   );
 };
