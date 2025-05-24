@@ -1,4 +1,26 @@
+@use './../../styles/vars.scss' as *;
+
 .header {
-  padding-block: 20px;
-  border-bottom: 2px solid #bebebe;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  padding-block: 24px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  text-transform: uppercase;
+  color: $header-color;
+}
+
+.burger {
+  height: 24px;
+  width: 24px;
 }

@@ -1,8 +1,12 @@
 @use './styles/reset.scss' as *;
 @use './styles/mixins.scss' as *;
+@use './styles/vars.scss' as *;
 
 * {
-  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: $main-text-color;
 }
 
 .app {
@@ -13,7 +17,12 @@
 
 .container {
   margin-inline: auto;
-  max-width: 1200px;
+  max-width: 1440px;
+  padding-inline: 16px;
+}
 
-  border: 1px solid blue;
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: 30px;
+  }
 }

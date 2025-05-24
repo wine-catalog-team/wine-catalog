@@ -5,7 +5,14 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className="container">
-        <nav>
+        <div className={styles.wrapper}>
+          <span className={styles.logo}>Logo</span>
+
+          <span className={styles.burger}>
+            <img src="./img/icons/burger.svg" alt="burger" />
+          </span>
+
+          {/* <nav>
           <ul>
             <li>
               <Link to="/">HomePage</Link>
@@ -14,7 +21,8 @@ const Header = () => {
               <Link to="/catalog">CatalogPage</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
+        </div>
       </div>
     </header>
   );

@@ -9,14 +9,12 @@ import ProductPage from '../../pages/ProductPage';
 const Main = () => {
   return (
     <main className={styles.main}>
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/catalog/:id" element={<ProductPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/catalog" element={<CatalogPage />} />
+        <Route path="/catalog/:id" element={<ProductPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </main>
   );
 };
