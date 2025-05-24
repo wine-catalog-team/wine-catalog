@@ -1,0 +1,97 @@
+@use './../../styles/vars.scss' as *;
+
+.about {
+  padding-block: 52px;
+}
+
+.top {
+  & p {
+    margin-bottom: 24px;
+    max-width: 350px;
+    font-family: Jura;
+    font-size: 18px;
+    line-height: 140%;
+    color: $text-color;
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px 16px;
+  margin-bottom: 40px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 16px;
+  width: 140px;
+  border-left: 2px solid $primary-bg-color;
+}
+
+.number {
+  font-size: 36px;
+  line-height: 115%;
+}
+
+.text {
+  line-height: 150%;
+  color: $text-color;
+}
+
+.bottom {
+  & img {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  & p {
+    line-height: 150%;
+  }
+
+  & p:first-child {
+    margin-bottom: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about {
+    padding-block: 104px;
+  }
+
+  .top {
+    & p {
+      margin-bottom: 40px;
+      font-size: 20px;
+    }
+  }
+
+  .list {
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+
+  .number {
+    font-size: 54px;
+  }
+
+  .bottom {
+    display: flex;
+    gap: 20px;
+    & img {
+      width: 70%;
+      margin-bottom: 0;
+    }
+
+    & p {
+      line-height: 150%;
+    }
+
+    & p:first-child {
+      margin-bottom: 16px;
+    }
+  }
+}

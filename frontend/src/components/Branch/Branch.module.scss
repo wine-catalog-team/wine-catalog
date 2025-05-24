@@ -1,0 +1,14 @@
+.branch {
+  display: block;
+  margin-inline: auto;
+  margin-bottom: 52px;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .branch {
+    margin-bottom: 104px;
+    max-width: 680px;
+  }
+}

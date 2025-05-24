@@ -1,0 +1,74 @@
+@use './../../styles/vars.scss' as *;
+
+.hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('./img/hero-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  text-align: center;
+
+  & h1 {
+    margin-bottom: 20px;
+    font-family: Jura;
+    font-size: 60px;
+    font-weight: 300;
+    line-height: 110%;
+    text-transform: uppercase;
+    color: $hero-color;
+  }
+
+  & p {
+    margin-bottom: 64px;
+    font-family: Jura;
+    font-size: 16px;
+    line-height: 140%;
+    color: $hero-lead-color;
+  }
+
+  & a {
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
+    padding: 16px 10px;
+    font-weight: 500;
+    line-height: 120%;
+    text-transform: uppercase;
+    border-radius: 2px;
+    background-color: $primary-bg-color;
+    color: $hero-color;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      background-color: $primary-bg-color-hover;
+    }
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    & h1 {
+      font-size: 180px;
+    }
+
+    & p {
+      font-size: 20px;
+    }
+
+    & a {
+      padding: 16px 31px;
+    }
+  }
+}

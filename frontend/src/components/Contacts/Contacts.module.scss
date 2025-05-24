@@ -1,0 +1,62 @@
+@use './../../styles/vars.scss' as *;
+
+.contacts {
+  padding-block: 52px;
+  background-image: url('./img/contact-bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  & h2 {
+    color: $contact-content-color;
+  }
+
+  & p {
+    max-width: 448px;
+    margin-bottom: 40px;
+    font-family: Jura;
+    font-size: 18px;
+    line-height: 140%;
+    color: $contact-content-color;
+  }
+}
+
+.form {
+  max-width: 448px;
+}
+
+.label {
+  margin-bottom: 8px;
+  line-height: 150%;
+  color: $form-label-color;
+}
+
+.submit {
+  display: block;
+  width: 100%;
+  margin-inline: auto;
+  padding: 16px 10px;
+  font-weight: 500;
+  line-height: 120%;
+  text-transform: uppercase;
+  border-radius: 2px;
+  background-color: $primary-bg-color;
+  color: $hero-color;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    background-color: $primary-bg-color-hover;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contacts {
+    padding-block: 104px;
+
+    & p {
+      margin-bottom: 64px;
+      font-size: 20px;
+    }
+  }
+}

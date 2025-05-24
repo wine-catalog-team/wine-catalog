@@ -1,0 +1,61 @@
+.about {
+  margin-bottom: 52px;
+}
+
+.content {
+  margin-bottom: 40px;
+  max-width: 448px;
+}
+
+.quote {
+  max-width: 446px;
+  margin-block: 24px;
+
+  & img {
+    margin-bottom: 8px;
+  }
+
+  & p {
+    margin-bottom: 16px;
+    font-family: Jura;
+    font-size: 18px;
+    line-height: 140%;
+  }
+}
+
+.author {
+  line-height: 150%;
+  text-align: right;
+}
+
+.right {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .about {
+    margin-bottom: 104px;
+  }
+
+  .content {
+    margin-bottom: 64px;
+  }
+
+  .gallery {
+    display: flex;
+    gap: 20px;
+  }
+
+  .quote {
+    margin-block: 94px;
+    margin-inline: auto;
+  }
+
+  .right {
+    display: block;
+
+    & img {
+      height: 100%;
+    }
+  }
+}
