@@ -2,8 +2,10 @@ import AboutOwner from '../../components/AboutOwner';
 import AboutUs from '../../components/AboutUs';
 import AboutWine from '../../components/AboutWine';
 import Branch from '../../components/Branch';
+import Categories from '../../components/Categories';
 import Events from '../../components/Events';
 import Hero from '../../components/Hero';
+
 import styles from './HomePage.module.scss';
 
 const HomePage = () => {
@@ -15,6 +17,8 @@ const HomePage = () => {
       <AboutWine />
       <AboutOwner />
       <Events />
+      <Categories />
+      <Branch />
     </div>
   );
 };
