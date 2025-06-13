@@ -1,0 +1,62 @@
+@use './../../styles/vars.scss' as *;
+
+.footer {
+  padding-top: 40px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.logo {
+  font-family: Jura;
+  font-size: 36px;
+  line-height: 115%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.social {
+  display: flex;
+  gap: 16px;
+}
+
+.copy {
+  padding-block: 10px;
+  background-color: $copy-bg-color;
+
+  & p {
+    color: $copy-color;
+    line-height: 150%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+
+  .logo {
+    order: 2;
+  }
+
+  .left {
+    order: 1;
+  }
+
+  .right {
+    order: 3;
+  }
+}

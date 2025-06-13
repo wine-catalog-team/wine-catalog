@@ -1,0 +1,93 @@
+@use './../../styles/vars.scss' as *;
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  padding-block: 24px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  text-transform: uppercase;
+  color: $header-color;
+}
+
+.burger {
+  display: block;
+  height: 24px;
+  width: 24px;
+}
+
+.nav {
+  display: none;
+
+  & ul {
+    display: flex;
+    gap: 40px;
+  }
+
+  & a {
+    position: relative;
+    color: $header-color;
+    font-weight: 500;
+    line-height: 120%;
+    text-align: center;
+    text-transform: uppercase;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      display: block;
+      height: 2px;
+      width: 0;
+      background-color: $header-color;
+      transition: all 0.3s ease-in;
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.btn {
+  display: none;
+  padding: 15px 25px;
+  color: $header-color;
+  font-weight: 500;
+  line-height: 120%;
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px $header-color solid;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    color: $header-btn-color-hover;
+    border-color: $header-btn-color-hover;
+  }
+}
+
+@media (min-width: 1024px) {
+  .burger {
+    display: none;
+  }
+
+  .nav {
+    display: block;
+  }
+
+  .btn {
+    display: block;
+  }
+}

@@ -1,0 +1,62 @@
+@use './styles/reset.scss' as *;
+@use './styles/mixins.scss' as *;
+@use './styles/vars.scss' as *;
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: $main-text-color;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  margin-inline: auto;
+  max-width: 1440px;
+  padding-inline: 16px;
+}
+
+h2 {
+  margin-bottom: 24px;
+  font-family: Jura;
+  font-size: 36px;
+  line-height: 115%;
+}
+
+label {
+  display: block;
+}
+
+input,
+textarea {
+  margin-bottom: 24px;
+  border-radius: 2px;
+  padding: 10px;
+  width: 100%;
+  background-color: $input-bg-color;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: 30px;
+  }
+
+  h2 {
+    font-size: 54px;
+  }
+}

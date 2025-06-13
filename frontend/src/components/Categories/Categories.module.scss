@@ -1,0 +1,64 @@
+@use './../../styles/vars.scss' as *;
+
+.categories {
+  padding-block: 52px;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.item {
+  position: relative;
+  width: calc((100% / 2) - 8px);
+  height: auto;
+  min-height: 280px;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  & img {
+    width: 100%;
+    transition: all 0.5s ease-in;
+  }
+
+  &:hover img {
+    transform: scale(1.2);
+  }
+
+  & .subtitle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px 8px;
+    font-family: Jura;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 130%;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.5);
+    color: $category-text-color;
+  }
+}
+
+@media (min-width: 1024px) {
+  .categories {
+    padding-block: 104px;
+  }
+
+  .list {
+    gap: 20px;
+  }
+
+  .item {
+    width: calc((100% / 4) - 20px);
+    max-height: 550px;
+  }
+}
