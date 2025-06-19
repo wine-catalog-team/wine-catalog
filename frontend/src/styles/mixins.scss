@@ -1,0 +1,7 @@
+@mixin container-padding {
+  padding-inline: 16px;
+
+  @media (min-width: 1024px) {
+    padding-inline: 30px;
+  }
+}

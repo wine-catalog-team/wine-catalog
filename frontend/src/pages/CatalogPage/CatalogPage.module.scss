@@ -1,3 +1,198 @@
-.text {
-  color: blue;
+@import '../../styles/mixins.scss';
+@import '../../styles/vars.scss';
+
+.heroSection {
+  position: relative;
+  z-index: 1;
+  background-image: url('./img/wine-cellar.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+
+  .catalog {
+    padding-block: 40px;
+    @include container-padding;
+  }
+
+  .title {
+    font-family: Inter;
+    font-weight: 300;
+    font-size: 52px;
+    line-height: 150%;
+    color: white;
+    margin-top: 40px;
+  }
+
+  .description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    color: $hero-color;
+    margin-top: 16px;
+    max-width: 700px;
+  }
+
+.searchForm {
+  margin-top: 34px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.search {
+  padding: 14px 20px;
+  width: 100%;
+  max-width: 480px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+}
+
+.searchBtn {
+  height: 48px;
+  padding: 0 30px;
+  background-color: #7D0A0A;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+}
+
+.catalogSection {
+  background-color: white;
+
+  .catalog {
+    padding-block: 40px;
+    @include container-padding;
+  }
+}
+
+// Стилі для списку вин і карток:
+.wineGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.card {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  padding: 16px;
+  max-width: 272px;
+  height: 390px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardContent {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.winery, .location {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+.paginationControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  label {
+    font-weight: 500;
+
+    select {
+      margin-left: 8px;
+      padding: 4px 8px;
+    }
+  }
+
+  .paginationButtons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    button {
+      padding: 6px 12px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover:not(:disabled) {
+        background-color: #333;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+    }
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  padding-top: 20px;
+
+  @include container-padding;
+
+  select {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+    background-color: #fcfcfc;
+  }
+}
+
+.itemsPerPageLabel {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  margin-left: auto;
+
+  select {
+    margin-left: 8px;
+    padding: 8px 12px;
+    font-size: 15px;
+    border-radius: 4px;
+  }
 }

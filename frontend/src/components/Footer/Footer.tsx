@@ -9,8 +9,8 @@ const Footer = () => {
 
           <ul className={styles.left}>
             <li>ТОВ “Вінарі” 65000,</li>
-            <li>Україна, м. Одесавул.</li>
-            <li>Промислова, 4</li>
+            <li>Україна, м. Одеса</li>
+            <li>вул. Промислова, 4</li>
           </ul>
 
           <div className={styles.right}>
