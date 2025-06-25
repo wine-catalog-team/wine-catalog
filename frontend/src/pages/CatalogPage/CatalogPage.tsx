@@ -4,6 +4,7 @@ import { CustomFilter } from "./CustomFilter";
 import WineList from "./WineList";
 import styles from "./CatalogPage.module.scss";
 import type { Wine } from "../../Types/Wine";
+import { SortFilter } from "./SortFilter";
 
 export const CatalogPage = () => {
   const [wines, setWines] = useState<Wine[]>([]);
@@ -12,9 +13,27 @@ export const CatalogPage = () => {
   const [error, setError] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
-  const [wineType, setWineType] = useState<string[]>([]);
-  const [sweetness, setSweetness] = useState<string[]>([]);
-  const [grapeVariety, setGrapeVariety] = useState<string[]>([]);
+  const [sortBy, setSortBy] = useState(
+    () => localStorage.getItem("sortBy") || ""
+  );
+  const [wineType, setWineType] = useState<string[]>(() => {
+    const saved = localStorage.getItem("wineType");
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [sweetness, setSweetness] = useState<string[]>(() => {
+    const saved = localStorage.getItem("sweetness");
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [grapeVariety, setGrapeVariety] = useState<string[]>(() => {
+    const saved = localStorage.getItem("grapeVariety");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const sweetnessOptions = ["Сухе", "Напівсухе", "Напівсолодке", "Солодке"];
+
+  const getSweetnessById = (id: number): string => {
+    return sweetnessOptions[id % sweetnessOptions.length];
+  };
 
   useEffect(() => {
     const urls = [
@@ -38,9 +57,8 @@ export const CatalogPage = () => {
           return wineArray.map((wine: Wine) => ({
             ...wine,
             type: types[i],
-            sweetness: ["Сухе", "Напівсухе", "Напівсолодке", "Солодке"][
-              Math.floor(Math.random() * 4)
-            ],
+            sweetness: getSweetnessById(wine.id),
+
             grapeVariety: [
               "Cabernet Sauvignon",
               "Merlot",
@@ -57,7 +75,9 @@ export const CatalogPage = () => {
   }, []);
 
   useEffect(() => {
-    let result = wines;
+    const cleanSortBy = sortBy.replace(/-forced-\d+$/, "");
+
+    let result = [...wines];
 
     if (query) {
       result = result.filter((wine) =>
@@ -83,11 +103,33 @@ export const CatalogPage = () => {
       );
     }
 
-    result.sort((a, b) => a.wine.localeCompare(b.wine));
+    if (cleanSortBy === "rating") {
+      result.sort(
+        (a, b) => Number(b.rating.average) - Number(a.rating.average)
+      );
+    } else if (cleanSortBy === "popularity") {
+      result.sort(
+        (a, b) => Number(b.rating.reviews) - Number(a.rating.reviews)
+      );
+    } else if (cleanSortBy === "price-asc") {
+      result.sort((a, b) => {
+        const priceA = parseFloat(String(a.price).replace(/[^\d.]/g, "")) || 0;
+        const priceB = parseFloat(String(b.price).replace(/[^\d.]/g, "")) || 0;
+        return priceA - priceB;
+      });
+    } else if (cleanSortBy === "price-desc") {
+      result.sort((a, b) => {
+        const priceA = parseFloat(String(a.price).replace(/[^\d.]/g, "")) || 0;
+        const priceB = parseFloat(String(b.price).replace(/[^\d.]/g, "")) || 0;
+        return priceB - priceA;
+      });
+    } else {
+      result.sort((a, b) => a.wine.localeCompare(b.wine));
+    }
 
     setFilteredWines(result);
     setCurrentPage(1);
-  }, [query, wines, wineType, sweetness, grapeVariety]);
+  }, [query, wines, wineType, sweetness, grapeVariety, sortBy]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -113,6 +155,23 @@ export const CatalogPage = () => {
 
     return pages;
   };
+
+  // Зберігати у localStorage при зміні
+  useEffect(() => {
+    localStorage.setItem("sortBy", sortBy);
+  }, [sortBy]);
+
+  useEffect(() => {
+    localStorage.setItem("wineType", JSON.stringify(wineType));
+  }, [wineType]);
+
+  useEffect(() => {
+    localStorage.setItem("sweetness", JSON.stringify(sweetness));
+  }, [sweetness]);
+
+  useEffect(() => {
+    localStorage.setItem("grapeVariety", JSON.stringify(grapeVariety));
+  }, [grapeVariety]);
 
   return (
     <>
@@ -154,6 +213,22 @@ export const CatalogPage = () => {
             ]}
             selected={grapeVariety}
             onChange={setGrapeVariety}
+          />
+          <SortFilter
+            key={sortBy}
+            title="Сортування"
+            selected={sortBy}
+            onChange={(value) => {
+              console.log("Встановлюємо sortBy:", value);
+              setSortBy(value);
+            }}
+            options={[
+              { value: "", label: "Назва (А-Я)" },
+              { value: "rating", label: "За рейтингом" },
+              { value: "popularity", label: "За популярністю" },
+              { value: "price-asc", label: "Від дешевих до дорогих" },
+              { value: "price-desc", label: "Від дорогих до дешевих" },
+            ]}
           />
 
           <label className={styles.itemsPerPageLabel}>

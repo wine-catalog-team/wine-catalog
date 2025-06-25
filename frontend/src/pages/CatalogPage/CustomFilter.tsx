@@ -44,6 +44,7 @@ export const CustomFilter: React.FC<Props> = ({
                 type="checkbox"
                 checked={tempSelected.includes(option)}
                 onChange={() => toggleOption(option)}
+                className={styles.inputLabel}
               />
               {option}
             </label>

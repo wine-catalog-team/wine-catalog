@@ -5,6 +5,7 @@ import CatalogPage from "./pages/CatalogPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import { Routes, Route } from "react-router-dom";
+import MapWithShops from "./pages/MapWithShops/MapWithShops";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/catalog/:id" element={<ProductDetailsPage />} />
+          <Route path="/map" element={<MapWithShops />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

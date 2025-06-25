@@ -30,7 +30,7 @@ body.no-scroll {
 
 .container {
   margin-inline: auto;
-  max-width: 1440px;
+
 @include container-padding;
 }
 

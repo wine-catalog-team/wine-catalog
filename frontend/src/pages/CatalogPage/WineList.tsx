@@ -23,7 +23,7 @@ const WineList: React.FC<WineListProps> = ({
       <ul className={styles.wineGrid}>
         {currentItems.map((wine) => (
           <li key={wine.id} className={styles.card}>
-            <Link to={`/catalog/${wine.id}`} className={styles.link}>
+            <Link to={`/catalog/${wine.id}`} state={{ type: wine.type }}>
               <img
                 src={wine.image}
                 alt={wine.wine}

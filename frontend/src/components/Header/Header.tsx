@@ -45,7 +45,7 @@ const Header = () => {
                 <Link to="/catalog">Колекція вин</Link>
               </li>
               <li>
-                <Link to="/catalog">Де купити</Link>
+                <Link to="/map">Де купити</Link>
               </li>
             </ul>
           </nav>
@@ -76,7 +76,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/catalog" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/map" onClick={() => setIsMenuOpen(false)}>
                 Де купити
               </Link>
             </li>

@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./ProductDetailsPage.module.scss";
 import type { Wine } from "../../Types/Wine";
@@ -10,6 +10,14 @@ const ProductDetailsPage = () => {
   const [recommendedWines, setRecommendedWines] = useState<Wine[]>([]);
   const [error, setError] = useState("");
   const { pathname } = window.location;
+  const location = useLocation();
+  const wineTypeFromState = location.state?.type;
+
+  const sweetnessOptions = ["Сухе", "Напівсухе", "Напівсолодке", "Солодке"];
+
+  const getSweetnessById = (id: number): string => {
+    return sweetnessOptions[id % sweetnessOptions.length];
+  };
 
   useEffect(() => {
     const urls = [
@@ -37,9 +45,8 @@ const ProductDetailsPage = () => {
             return {
               ...wine,
               type: types[i],
-              sweetness: ["Сухе", "Напівсухе", "Напівсолодке", "Солодке"][
-                Math.floor(Math.random() * 4)
-              ],
+              sweetness: getSweetnessById(wine.id),
+
               grapeVariety: [
                 "Cabernet Sauvignon",
                 "Merlot",
@@ -52,7 +59,9 @@ const ProductDetailsPage = () => {
           });
         });
 
-        const foundWine = allWines.find((w) => String(w.id) === id);
+        const foundWine = allWines.find(
+          (w) => String(w.id) === id && w.type === wineTypeFromState
+        );
         if (foundWine) {
           setWine(foundWine);
           const filteredWines = allWines.filter((w) => w.id !== foundWine.id);
@@ -63,7 +72,7 @@ const ProductDetailsPage = () => {
         }
       })
       .catch((err) => setError(err.message));
-  }, [id]);
+  }, [id, wineTypeFromState]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -83,7 +92,7 @@ const ProductDetailsPage = () => {
       </div>
     );
 
-  const [country, region] = wine.location.split("\n·\n");
+  const [country, region] = wine.location.split("\n\u00b7\n");
 
   return (
     <div className={styles.container}>
@@ -126,7 +135,9 @@ const ProductDetailsPage = () => {
               {wine.rating.reviews} відгуків
             </p>
           </div>
-          <button className={styles.button}>Адреси Магазинів</button>
+          <Link to="/map" className={styles.button}>
+            Адреси Магазинів
+          </Link>
         </div>
       </div>
 
