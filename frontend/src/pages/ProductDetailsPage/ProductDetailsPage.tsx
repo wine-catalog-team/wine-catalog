@@ -40,13 +40,11 @@ const ProductDetailsPage = () => {
         const allWines = data.flatMap((wineArray, i) => {
           return wineArray.map((wine: Wine) => {
             const vintageMatch = wine.wine.match(/\b(19|20)\d{2}\b/);
-            const price = `${Math.floor(Math.random() * 800 + 200)} грн`;
 
             return {
               ...wine,
               type: types[i],
               sweetness: getSweetnessById(wine.id),
-
               grapeVariety: [
                 "Cabernet Sauvignon",
                 "Merlot",
@@ -54,7 +52,6 @@ const ProductDetailsPage = () => {
                 "Pinot Noir",
               ][Math.floor(Math.random() * 4)],
               vintage: vintageMatch ? vintageMatch[0] : "N/A",
-              price,
             };
           });
         });
@@ -72,6 +69,7 @@ const ProductDetailsPage = () => {
         }
       })
       .catch((err) => setError(err.message));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, wineTypeFromState]);
 
   useEffect(() => {
@@ -128,9 +126,6 @@ const ProductDetailsPage = () => {
               <span>Регіон:</span> {region || "N/A"}
             </p>
             <p>
-              <span>Ціна:</span> {wine.price}
-            </p>
-            <p>
               <span>Рейтинг:</span> {wine.rating.average} з{" "}
               {wine.rating.reviews} відгуків
             </p>
@@ -150,6 +145,8 @@ const ProductDetailsPage = () => {
             <Link
               key={recWine.id}
               to={`/catalog/${recWine.id}`}
+              state={{ type: recWine.type }}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className={styles.link}
             >
               <div className={styles.recommendCard}>

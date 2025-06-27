@@ -12,6 +12,7 @@
 
   .catalog {
     padding-block: 40px;
+
     @include container-padding;
   }
 
@@ -33,37 +34,38 @@
     max-width: 700px;
   }
 
-.searchForm {
-  margin-top: 34px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
+  .searchForm {
+    margin-top: 34px;
+    display: flex;
+    gap: 16px;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: stretch;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
   }
-}
 
-.search {
-  padding: 14px 20px;
-  width: 100%;
-  max-width: 480px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  outline: none;
-}
+  .search {
+    padding: 14px 20px;
+    width: 100%;
+    max-width: 480px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+  }
 
-.searchBtn {
-  height: 48px;
-  padding: 0 30px;
-  background-color: #7D0A0A;
-  font-weight: 600;
-  font-size: 14px;
-}
-
+  .searchBtn {
+    height: 48px;
+    padding: 0 30px;
+    background-color: #7D0A0A;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
 }
 
 .catalogSection {
@@ -83,12 +85,11 @@
 }
 
 .card {
-  position: relative;
   background-color: white;
   border-radius: 10px;
   padding: 16px;
   width: 272px;
-  height: 390px;
+  height: 410px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -115,70 +116,47 @@
   font-size: 18px;
   font-weight: 600;
   color: #333;
-  margin: 0;
 }
 
 .winery, .location {
   font-size: 14px;
   color: #777;
-  margin: 0;
 }
 
-.paginationControls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 40px;
-  gap: 20px;
-  flex-wrap: wrap;
-
-  label {
-    font-weight: 500;
-
-    select {
-      margin-left: 8px;
-      padding: 4px 8px;
-    }
-  }
-
-  .paginationButtons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    button {
-      padding: 6px 12px;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.2s;
-
-      &:hover:not(:disabled) {
-        background-color: #333;
-      }
-
-      &:disabled {
-        opacity: 0.5;
-        cursor: default;
-      }
-    }
+.pageBtn {
+  @media screen and (max-width: 480px) {
+    padding: 4px 6px;
+    font-size: 12px;
+    min-width: 32px;
+    flex: 0 0 auto;
+    flex-shrink: 0;
   }
 }
+
+
+.active {
+  background-color: #7D0A0A !important;
+}
+
 
 .filters {
   display: flex;
   gap: 16px;
   padding-top: 20px;
+  margin-bottom: 10px;
 
   @include container-padding;
 
   select {
     padding: 8px 12px;
     border-radius: 4px;
-    border: none;
     font-size: 14px;
     background-color: #fcfcfc;
+    border: none;
+  }
+
+  @media screen and (max-width: 768px) {
+  display: none;
   }
 }
 
@@ -188,6 +166,10 @@
   font-weight: 500;
   margin-left: auto;
 
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
   select {
     margin-left: 8px;
     padding: 8px 12px;
@@ -196,15 +178,152 @@
   }
 }
 
-.sortLabel {
-  margin-right: 16px;
+.resultsCount {
+  margin-bottom: 24px;
+  @include container-padding;
+}
+
+.resultsTitle {
+  font-weight: normal;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.countAndFilters {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.countText {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.filterTag {
+  background-color: #eee;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.filtersRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  // gap: 16px;
+  padding-top: 20px;
+  margin-bottom: 10px;
+
+  @include container-padding;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+
+.filters {
+  display: flex;
+  gap: 16px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 
   select {
-    margin-left: 8px;
     padding: 8px 12px;
-    font-size: 15px;
     border-radius: 4px;
+    font-size: 14px;
     background-color: #fcfcfc;
-
+    border: none;
   }
 }
+
+.actionsRow {
+  display: flex;
+
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  max-width: 200px;
+  color: #333;
+
+  @media screen and (min-width: 769px) {
+    display: none; 
+  }
+}
+
+.filterIcon {
+  display: none;
+
+  @media screen and (max-width: 768px) {
+  width: 24px;
+  height: 24px;
+  fill: #333;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  margin-right: 10px; 
+  margin-top: -2px;
+  }
+}
+
+.sortIcon {
+  display: none;
+
+  @media screen and (max-width: 768px) {
+  width: 24px;
+  height: 24px;
+  fill: #333;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  margin-right: -5px; 
+  }
+}
+
+.mobileControls {
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 16px 0;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+

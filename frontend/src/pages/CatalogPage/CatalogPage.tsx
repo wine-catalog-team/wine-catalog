@@ -1,10 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { CatalogHeader } from "./CatalogHeader";
 import { CustomFilter } from "./CustomFilter";
 import WineList from "./WineList";
 import styles from "./CatalogPage.module.scss";
 import type { Wine } from "../../Types/Wine";
 import { SortFilter } from "./SortFilter";
+import { FilterPopup } from "../../components/FilterPopup/FilterPopup";
 
 export const CatalogPage = () => {
   const [wines, setWines] = useState<Wine[]>([]);
@@ -13,13 +16,22 @@ export const CatalogPage = () => {
   const [error, setError] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   const [sortBy, setSortBy] = useState(
     () => localStorage.getItem("sortBy") || ""
   );
+  const location = useLocation();
   const [wineType, setWineType] = useState<string[]>(() => {
     const saved = localStorage.getItem("wineType");
+
+    if (location.state?.wineType) {
+      return location.state.wineType;
+    }
+
     return saved ? JSON.parse(saved) : [];
   });
+
   const [sweetness, setSweetness] = useState<string[]>(() => {
     const saved = localStorage.getItem("sweetness");
     return saved ? JSON.parse(saved) : [];
@@ -58,7 +70,6 @@ export const CatalogPage = () => {
             ...wine,
             type: types[i],
             sweetness: getSweetnessById(wine.id),
-
             grapeVariety: [
               "Cabernet Sauvignon",
               "Merlot",
@@ -109,20 +120,8 @@ export const CatalogPage = () => {
       );
     } else if (cleanSortBy === "popularity") {
       result.sort(
-        (a, b) => Number(b.rating.reviews) - Number(a.rating.reviews)
+        (a, b) => parseInt(b.rating.reviews) - parseInt(a.rating.reviews)
       );
-    } else if (cleanSortBy === "price-asc") {
-      result.sort((a, b) => {
-        const priceA = parseFloat(String(a.price).replace(/[^\d.]/g, "")) || 0;
-        const priceB = parseFloat(String(b.price).replace(/[^\d.]/g, "")) || 0;
-        return priceA - priceB;
-      });
-    } else if (cleanSortBy === "price-desc") {
-      result.sort((a, b) => {
-        const priceA = parseFloat(String(a.price).replace(/[^\d.]/g, "")) || 0;
-        const priceB = parseFloat(String(b.price).replace(/[^\d.]/g, "")) || 0;
-        return priceB - priceA;
-      });
     } else {
       result.sort((a, b) => a.wine.localeCompare(b.wine));
     }
@@ -156,7 +155,6 @@ export const CatalogPage = () => {
     return pages;
   };
 
-  // Зберігати у localStorage при зміні
   useEffect(() => {
     localStorage.setItem("sortBy", sortBy);
   }, [sortBy]);
@@ -188,63 +186,127 @@ export const CatalogPage = () => {
       </section>
 
       <section className={styles.catalogSection}>
-        <div className={styles.filters}>
-          <CustomFilter
-            title="Тип вина"
-            options={["reds", "rose", "whites", "sparkling"]}
-            selected={wineType}
-            onChange={setWineType}
-          />
+        <div className={styles.filtersRow}>
+          <div className={styles.filters}>
+            <CustomFilter
+              key={`wineType-${wineType.join(",")}`}
+              title="Тип вина"
+              options={["reds", "rose", "whites", "sparkling"]}
+              selected={wineType}
+              onChange={setWineType}
+            />
 
-          <CustomFilter
-            title="Солодкість"
-            options={["Сухе", "Напівсухе", "Напівсолодке", "Солодке"]}
-            selected={sweetness}
-            onChange={setSweetness}
-          />
+            <CustomFilter
+              key={`sweetness-${sweetness.join(",")}`}
+              title="Солодкість"
+              options={["Сухе", "Напівсухе", "Напівсолодке", "Солодке"]}
+              selected={sweetness}
+              onChange={setSweetness}
+            />
 
-          <CustomFilter
-            title="Сорт винограду"
-            options={[
-              "Cabernet Sauvignon",
-              "Merlot",
-              "Chardonnay",
-              "Pinot Noir",
-            ]}
-            selected={grapeVariety}
-            onChange={setGrapeVariety}
-          />
-          <SortFilter
-            key={sortBy}
-            title="Сортування"
-            selected={sortBy}
-            onChange={(value) => {
-              console.log("Встановлюємо sortBy:", value);
-              setSortBy(value);
-            }}
-            options={[
-              { value: "", label: "Назва (А-Я)" },
-              { value: "rating", label: "За рейтингом" },
-              { value: "popularity", label: "За популярністю" },
-              { value: "price-asc", label: "Від дешевих до дорогих" },
-              { value: "price-desc", label: "Від дорогих до дешевих" },
-            ]}
-          />
+            <CustomFilter
+              key={`grapeVariety-${grapeVariety.join(",")}`}
+              title="Сорт винограду"
+              options={[
+                "Cabernet Sauvignon",
+                "Merlot",
+                "Chardonnay",
+                "Pinot Noir",
+              ]}
+              selected={grapeVariety}
+              onChange={setGrapeVariety}
+            />
+          </div>
+          <div className={styles.actionsRow}>
+            <div className={styles.mobileControls}>
+              <button
+                className={styles.actionButton}
+                onClick={() => setIsFilterOpen(true)}
+              >
+                <img
+                  src="/img/filter.svg"
+                  alt="Фільтр"
+                  className={styles.filterIcon}
+                />
+                ФІЛЬТРУВАТИ
+              </button>
 
-          <label className={styles.itemsPerPageLabel}>
-            <select
-              onChange={(e) => {
-                setItemsPerPage(Number(e.target.value));
-                setCurrentPage(1);
-              }}
-              value={itemsPerPage}
-            >
-              <option value={8}>8</option>
-              <option value={16}>16</option>
-              <option value={32}>32</option>
-            </select>
-          </label>
+              <FilterPopup
+                isOpen={isFilterOpen}
+                onClose={() => setIsFilterOpen(false)}
+                wineType={wineType}
+                sweetness={sweetness}
+                grapeVariety={grapeVariety}
+                setWineType={setWineType}
+                setSweetness={setSweetness}
+                setGrapeVariety={setGrapeVariety}
+              />
+
+              <img
+                src="/img/sort.svg"
+                alt="Сортування"
+                className={styles.sortIcon}
+              />
+              <SortFilter
+                key={sortBy}
+                title="Сортування"
+                selected={sortBy}
+                onChange={(value) => {
+                  setSortBy(value);
+                }}
+                options={[
+                  { value: "", label: "Назва (А-Я)" },
+                  { value: "rating", label: "За рейтингом" },
+                  { value: "popularity", label: "За популярністю" },
+                ]}
+              />
+
+              <label className={styles.itemsPerPageLabel}>
+                <select
+                  onChange={(e) => {
+                    setItemsPerPage(Number(e.target.value));
+                    setCurrentPage(1);
+                  }}
+                  value={itemsPerPage}
+                >
+                  <option value={8}>8</option>
+                  <option value={16}>16</option>
+                  <option value={32}>32</option>
+                </select>
+              </label>
+            </div>
+          </div>
         </div>
+
+        <div className={styles.resultsCount}>
+          <p className={styles.resultsTitle}>
+            Результати пошуку
+            {query && ` “${query}”`}
+          </p>
+
+          <div className={styles.countAndFilters}>
+            <span className={styles.countText}>
+              Знайдено {filteredWines.length} товарів
+            </span>
+
+            {[...wineType, ...sweetness, ...grapeVariety].map((filter) => (
+              <span key={filter} className={styles.filterTag}>
+                <strong>{filter}</strong>
+                <button
+                  className={styles.removeBtn}
+                  onClick={() => {
+                    setWineType((prev) => prev.filter((f) => f !== filter));
+                    setSweetness((prev) => prev.filter((f) => f !== filter));
+                    setGrapeVariety((prev) => prev.filter((f) => f !== filter));
+                  }}
+                >
+                  ×
+                </button>
+              </span>
+            ))}
+          </div>
+        </div>
+
         <div className={styles.catalog}>
           <WineList
             currentItems={currentItems}
