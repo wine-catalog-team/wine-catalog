@@ -5,6 +5,7 @@ import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
+import { useState } from "react";
 
 const images = [
   "./img/events/event-1.png",
@@ -15,6 +16,7 @@ const images = [
 ];
 
 const Events = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
   return (
     <section className={styles.events}>
       <div className="container">
@@ -46,6 +48,7 @@ const Events = () => {
           slidesPerView={3}
           loop={true}
           spaceBetween={20}
+          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
@@ -53,7 +56,12 @@ const Events = () => {
           className={styles.carousel}
         >
           {images.map((img, i) => (
-            <SwiperSlide key={i} className={styles.slide}>
+            <SwiperSlide
+              key={i}
+              className={
+                activeIndex === i ? "swiper-slide-active-custom" : ""
+              }
+            >
               <img src={img} alt={`event ${i + 1}`} />
             </SwiperSlide>
           ))}
