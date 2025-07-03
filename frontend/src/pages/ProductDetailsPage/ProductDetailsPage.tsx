@@ -171,7 +171,7 @@ const ProductDetailsPage = () => {
 
         <div className={styles.showAllWrapper}>
           <Link to="/catalog" className={styles.showAllButton}>
-            Показати всі
+            ПОКАЗАТИ ВСІ
           </Link>
         </div>
       </div>

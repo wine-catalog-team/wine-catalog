@@ -1,7 +1,6 @@
 .dropdown {
   position: relative;
   display: inline-block;
-  font-family: inherit;
 }
 
 .button {
@@ -13,6 +12,49 @@
   text-transform: uppercase;
   font-weight: 500;
   color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.buttonSort {
+  padding: 8px 16px 8px 16px;
+  border: 1px solid #ccc;
+  background: none;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  
+
+  @media screen and (max-width: 768px) {
+
+  }
+}
+
+.sortIcon {
+  display: none;
+
+  @media screen and (max-width: 768px) {
+  width: 24px;
+  height: 24px;
+  fill: #333;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  margin-left: 10px;
+  }
+}
+
+.arrow {
+  transition: transform 0.3s ease-in-out;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .menu {
@@ -63,5 +105,3 @@
     background-color: #a30000;
   }
 }
-
-

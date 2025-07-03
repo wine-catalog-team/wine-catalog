@@ -15,7 +15,6 @@ const Categories = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               <img src="./img/categories/category-1.png" alt="category" />
-              <span className={styles.subtitle}>БІЛІ ВИНА</span>
             </Link>
           </li>
           <li className={styles.item}>
@@ -25,7 +24,6 @@ const Categories = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               <img src="./img/categories/category-2.png" alt="category" />
-              <span className={styles.subtitle}>ЧЕРВОНІ ВИНА</span>
             </Link>
           </li>
           <li className={styles.item}>
@@ -35,7 +33,6 @@ const Categories = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               <img src="./img/categories/category-3.png" alt="category" />
-              <span className={styles.subtitle}>РОЖЕВІ ВИНА</span>
             </Link>
           </li>
           <li className={styles.item}>
@@ -45,7 +42,6 @@ const Categories = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               <img src="./img/categories/category-4.png" alt="category" />
-              <span className={styles.subtitle}>ІГРИСТІ ВИНА</span>
             </Link>
           </li>
         </ul>

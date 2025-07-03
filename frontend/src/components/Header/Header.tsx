@@ -50,9 +50,9 @@ const Header = () => {
             </ul>
           </nav>
 
-          <a href="#contact" className={styles.btn}>
+          <Link to="/" state={{ scrollToContact: true }} className={styles.btn}>
             Зв’язатися з нами
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -81,13 +81,14 @@ const Header = () => {
               </Link>
             </li>
           </ul>
-          <a
-            href="#contact"
+          <Link
+            to="/"
+            state={{ scrollToContact: true }}
             className={styles.btn}
             onClick={() => setIsMenuOpen(false)}
           >
             Зв’язатися з нами
-          </a>
+          </Link>
         </div>
       )}
     </header>

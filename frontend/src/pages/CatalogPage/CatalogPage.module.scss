@@ -17,7 +17,6 @@
   }
 
   .title {
-    font-family: Inter;
     font-weight: 300;
     font-size: 52px;
     line-height: 150%;
@@ -145,7 +144,6 @@
   padding-top: 20px;
   margin-bottom: 10px;
 
-  @include container-padding;
 
   select {
     padding: 8px 12px;
@@ -164,17 +162,16 @@
   display: flex;
   align-items: center;
   font-weight: 500;
-  margin-left: auto;
+  margin-left: 20px;
 
   @media screen and (max-width: 768px) {
     display: none;
   }
 
   select {
-    margin-left: 8px;
-    padding: 8px 12px;
+    margin-left: 0;
+    padding: 10px 16px 10px 16px;
     font-size: 15px;
-    border-radius: 4px;
   }
 }
 
@@ -269,10 +266,9 @@
 .actionButton {
   display: flex;
   align-items: center;
-  padding: 8px 20px;
+  padding: 8px 16px 8px 16px;
   color: #333;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid #ccc;
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
@@ -301,21 +297,6 @@
   }
 }
 
-.sortIcon {
-  display: none;
-
-  @media screen and (max-width: 768px) {
-  width: 24px;
-  height: 24px;
-  fill: #333;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  display: block;
-  margin-right: -5px; 
-  }
-}
-
 .mobileControls {
 
     display: flex;
@@ -327,3 +308,40 @@
     flex-wrap: wrap;
 }
 
+.bottom {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+}
+
+.group {
+  position: relative;
+  display: inline-block;
+}
+
+.select {
+  color: #333;
+  padding: 11px 26px 11px 14px;
+  font-size: 16px;
+  border: 1px solid #b4bdc3;
+  border-radius: 8px;
+  outline: none;
+  appearance: none;
+  background-color: #fff;
+  width: 100%;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 20px;
+    height: 30px;
+  }
+}

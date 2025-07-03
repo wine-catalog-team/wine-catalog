@@ -3,7 +3,7 @@
 @use './styles/vars.scss' as *;
 
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Jura', sans-serif;
   font-weight: 400;
   font-size: 15px;
   color: $main-text-color;
@@ -36,7 +36,6 @@ body.no-scroll {
 
 h2 {
   margin-bottom: 24px;
-  font-family: Jura;
   font-size: 36px;
   line-height: 115%;
 }

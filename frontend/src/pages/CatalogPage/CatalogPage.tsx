@@ -221,7 +221,7 @@ export const CatalogPage = () => {
             <div className={styles.mobileControls}>
               <button
                 className={styles.actionButton}
-                onClick={() => setIsFilterOpen(true)}
+                onClick={() => setIsFilterOpen((prev) => !prev)}
               >
                 <img
                   src="/img/filter.svg"
@@ -242,11 +242,6 @@ export const CatalogPage = () => {
                 setGrapeVariety={setGrapeVariety}
               />
 
-              <img
-                src="/img/sort.svg"
-                alt="Сортування"
-                className={styles.sortIcon}
-              />
               <SortFilter
                 key={sortBy}
                 title="Сортування"
@@ -260,20 +255,31 @@ export const CatalogPage = () => {
                   { value: "popularity", label: "За популярністю" },
                 ]}
               />
-
-              <label className={styles.itemsPerPageLabel}>
+              <div className={styles.group}>
                 <select
-                  onChange={(e) => {
-                    setItemsPerPage(Number(e.target.value));
-                    setCurrentPage(1);
-                  }}
+                  id="perPage"
                   value={itemsPerPage}
+                  onChange={(e) => {
+                    const value = Number(e.target.value);
+                    setItemsPerPage(value);
+                  }}
+                  className={styles.select}
                 >
+                  <option value={4}>4</option>
                   <option value={8}>8</option>
                   <option value={16}>16</option>
-                  <option value={32}>32</option>
                 </select>
-              </label>
+
+                <span
+                  className={`${styles.arrow} ${styles.open}`}
+                  style={{
+                    marginLeft: "-30px",
+                    pointerEvents: "none",
+                  }}
+                >
+                  <img src="/img/arrow.svg" alt="arrow" />
+                </span>
+              </div>
             </div>
           </div>
         </div>

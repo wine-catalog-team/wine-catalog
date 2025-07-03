@@ -34,6 +34,16 @@ export const CustomFilter: React.FC<Props> = ({
     <div className={styles.dropdown}>
       <button className={styles.button} onClick={() => setIsOpen(!isOpen)}>
         {title}
+        <span
+          className={`${styles.arrow} ${isOpen ? styles.open : ""}`}
+          style={{
+            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+            marginLeft: "10px",
+            transition: "transform 0.3s ease-in-out",
+          }}
+        >
+          <img src="/img/arrow.svg" alt="arrow" />
+        </span>
       </button>
 
       {isOpen && (

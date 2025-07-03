@@ -16,14 +16,13 @@ export const SortFilter: React.FC<Props> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [tempSelected, setTempSelected] = useState<string>(selected);
-  const [forceToggle, setForceToggle] = useState(0); // ✨ Щоб форсити зміни
+  const [forceToggle, setForceToggle] = useState(0);
 
   useEffect(() => {
     setTempSelected(selected);
   }, [selected]);
 
   const applySort = () => {
-
     const valueToSet =
       tempSelected === selected
         ? `${tempSelected}-forced-${forceToggle}`
@@ -36,8 +35,19 @@ export const SortFilter: React.FC<Props> = ({
 
   return (
     <div className={styles.dropdown}>
-      <button className={styles.button} onClick={() => setIsOpen(!isOpen)}>
+      <button className={styles.buttonSort} onClick={() => setIsOpen(!isOpen)}>
         {title}
+        <img src="/img/sort.svg" alt="Сортування" className={styles.sortIcon} />
+        <span
+          className={`${styles.arrow} ${isOpen ? styles.open : ""}`}
+          style={{
+            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+            marginLeft: "10px",
+            transition: "transform 0.3s ease-in-out",
+          }}
+        >
+          <img src="/img/arrow.svg" alt="arrow" />
+        </span>
       </button>
 
       {isOpen && (
