@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import styles from "./Events.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperClass } from "swiper";
 import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
-import { useState } from "react";
+import { useRef } from "react";
 
 const images = [
   "./img/events/event-1.png",
@@ -16,7 +17,18 @@ const images = [
 ];
 
 const Events = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef<SwiperClass | null>(null);
+
+  const handleSlideChange = (swiper: SwiperClass) => {
+    swiper.slides.forEach((slide: HTMLElement) => {
+      slide.classList.remove("swiper-slide-active-custom");
+    });
+
+    swiper.slides[swiper.activeIndex].classList.add(
+      "swiper-slide-active-custom"
+    );
+  };
+
   return (
     <section className={styles.events}>
       <div className="container">
@@ -45,10 +57,18 @@ const Events = () => {
           modules={[Autoplay]}
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={3}
+          slidesPerView={"auto"}
           loop={true}
           spaceBetween={20}
-          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+          onSlideChange={handleSlideChange}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+            setTimeout(() => {
+              swiper.slides[swiper.activeIndex].classList.add(
+                "swiper-slide-active-custom"
+              );
+            }, 0);
+          }}
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
@@ -56,12 +76,7 @@ const Events = () => {
           className={styles.carousel}
         >
           {images.map((img, i) => (
-            <SwiperSlide
-              key={i}
-              className={
-                activeIndex === i ? "swiper-slide-active-custom" : ""
-              }
-            >
+            <SwiperSlide key={i}>
               <img src={img} alt={`event ${i + 1}`} />
             </SwiperSlide>
           ))}
