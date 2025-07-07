@@ -80,6 +80,11 @@ const Events = () => {
               <img src={img} alt={`event ${i + 1}`} />
             </SwiperSlide>
           ))}
+          {images.map((img, i) => (
+            <SwiperSlide key={i}>
+              <img src={img} alt={`event ${i + 1}`} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </section>
