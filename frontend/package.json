@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://wine-catalog-team.github.io/wine-catalog",
+  "homepage": "https://wine-catalog-team.github.io/wine-catalog/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

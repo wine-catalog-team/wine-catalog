@@ -14,7 +14,7 @@ const Categories = () => {
               state={{ wineType: ["whites"] }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              <img src="./img/categories/category-1.png" alt="category" />
+              <img src="/img/categories/category-1.png" alt="category" />
             </Link>
           </li>
           <li className={styles.item}>
@@ -23,7 +23,7 @@ const Categories = () => {
               state={{ wineType: ["reds"] }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              <img src="./img/categories/category-2.png" alt="category" />
+              <img src="/img/categories/category-2.png" alt="category" />
             </Link>
           </li>
           <li className={styles.item}>
@@ -32,7 +32,7 @@ const Categories = () => {
               state={{ wineType: ["rose"] }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              <img src="./img/categories/category-3.png" alt="category" />
+              <img src="/img/categories/category-3.png" alt="category" />
             </Link>
           </li>
           <li className={styles.item}>
@@ -41,7 +41,7 @@ const Categories = () => {
               state={{ wineType: ["sparkling"] }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              <img src="./img/categories/category-4.png" alt="category" />
+              <img src="/img/categories/category-4.png" alt="category" />
             </Link>
           </li>
         </ul>

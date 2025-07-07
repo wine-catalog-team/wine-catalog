@@ -28,12 +28,12 @@ const Footer = () => {
             <ul className={styles.social}>
               <li>
                 <a href="#">
-                  <img src="./img/icons/facebook.svg" alt="Facebook" />
+                  <img src="/img/icons/facebook.svg" alt="Facebook" />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="./img/icons/instagram.svg" alt="Instagram" />
+                  <img src="/img/icons/instagram.svg" alt="Instagram" />
                 </a>
               </li>
             </ul>

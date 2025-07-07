@@ -35,7 +35,7 @@ const AboutUs = () => {
         </ul>
 
         <div className={styles.bottom}>
-          <img src="./img/grapes.png" alt="grapes" />
+          <img src="/img/grapes.png" alt="grapes" />
 
           <div>
             <p>
