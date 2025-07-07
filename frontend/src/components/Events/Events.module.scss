@@ -72,7 +72,8 @@
 .carousel {
   width: 100%;
   padding-block: 40px;
-  padding-inline: 80px;
+  padding-inline: 0;
+  
 
   :global(.swiper-wrapper) {
     display: flex;
@@ -80,7 +81,7 @@
   }
 
   :global(.swiper-slide) {
-    width: 220px !important;
+    width: 220px;
     height: 350px;
     opacity: 1;
     display: flex;
@@ -89,7 +90,7 @@
     transition: transform 0.4s ease, opacity 0.3s ease;
 
     @media screen and (max-width: 768px) {
-      width: 120px !important;
+      width: 120px;
       height: 160px;
       
     }
@@ -104,13 +105,13 @@
   }
 
   :global(.swiper-slide-active) {
-    width: 300px !important;
+    width: 250px !important;
     height: 450px;
     opacity: 1;
     z-index: 2;
 
     @media screen and (max-width: 768px) {
-      width: 160px !important;
+      width: 160px;
       height: 248px;
     }
 

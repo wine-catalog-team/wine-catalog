@@ -3,14 +3,19 @@
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fff;
-  // font-family: "Inter", sans-serif;
   color: #333;
 }
 
 .breadcrumbs {
+  margin-top: 70px;
   font-size: 14px;
   color: #999;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 1024px) {
+  margin-top: 40px;
+  }
+
   a {
     color: #999;
     text-decoration: none;
@@ -48,6 +53,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: left;
 }
 
 .productName {
@@ -75,6 +81,8 @@
   padding: 16px;
   border-radius: 8px;
   justify-content: space-between;
+  align-items: flex-start;
+
 
   p {
     display: flex;
@@ -137,11 +145,13 @@
     letter-spacing: 1px;
   }
 
-  .recommendationGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 24px;
-  }
+.recommendationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+  gap: 24px;
+}
+
+
 
   .recommendCard {
     position: relative;
@@ -156,6 +166,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+    max-width: 272px;
+    width: 100%;
+    margin: 0 auto;
+    }
 
     &:hover {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

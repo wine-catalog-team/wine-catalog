@@ -255,30 +255,33 @@ export const CatalogPage = () => {
                   { value: "popularity", label: "За популярністю" },
                 ]}
               />
-              <div className={styles.group}>
-                <select
-                  id="perPage"
-                  value={itemsPerPage}
-                  onChange={(e) => {
-                    const value = Number(e.target.value);
-                    setItemsPerPage(value);
-                  }}
-                  className={styles.select}
-                >
-                  <option value={4}>4</option>
-                  <option value={8}>8</option>
-                  <option value={16}>16</option>
-                </select>
+              {/** Тільки для десктопів */}
+              <div className={styles.itemsPerPageWrapper}>
+                <div className={styles.group}>
+                  <select
+                    id="perPage"
+                    value={itemsPerPage}
+                    onChange={(e) => {
+                      const value = Number(e.target.value);
+                      setItemsPerPage(value);
+                    }}
+                    className={styles.select}
+                  >
+                    <option value={4}>4</option>
+                    <option value={8}>8</option>
+                    <option value={16}>16</option>
+                  </select>
 
-                <span
-                  className={`${styles.arrow} ${styles.open}`}
-                  style={{
-                    marginLeft: "-30px",
-                    pointerEvents: "none",
-                  }}
-                >
-                  <img src="/img/arrow.svg" alt="arrow" />
-                </span>
+                  <span
+                    className={`${styles.arrow} ${styles.open}`}
+                    style={{
+                      marginLeft: "-30px",
+                      pointerEvents: "none",
+                    }}
+                  >
+                    <img src="/img/arrow.svg" alt="arrow" />
+                  </span>
+                </div>
               </div>
             </div>
           </div>

@@ -55,6 +55,7 @@ const Events = () => {
       <div className={styles.sliderWrapper}>
         <Swiper
           modules={[Autoplay]}
+          centeredSlidesBounds={true}
           grabCursor={true}
           centeredSlides={true}
           slidesPerView={"auto"}

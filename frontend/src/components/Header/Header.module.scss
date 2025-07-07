@@ -43,10 +43,11 @@
   }
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
 }
+
 
 .logo {
   justify-self: start;
@@ -73,16 +74,20 @@
   }
 }
 
-.burger {
-  display: block;
-  height: 24px;
-  width: 24px;
-}
+
+
 
 .nav {
   display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 
-  & ul {
+  @media (min-width: 1024px) {
+    display: block;
+  }
+
+  ul {
     display: flex;
     gap: 40px;
   }
@@ -114,6 +119,17 @@
   }
 }
 
+.burger {
+  display: block;
+  height: 24px;
+  width: 24px;
+  margin-left: auto;
+
+  @media (min-width: 1024px) {
+      display: none;
+  }
+}
+
 .btn {
   display: none;
   padding: 15px 25px;
@@ -132,9 +148,6 @@
 }
 
 @media (min-width: 1024px) {
-  .burger {
-    display: none;
-  }
 
   .nav {
     display: block;
