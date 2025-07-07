@@ -29,11 +29,14 @@ const Header = () => {
       <div className="container">
         <div className={styles.wrapper}>
           <Link to="/" className={styles.logo}>
-            <img src="/img/logo.svg" alt="Logo" />
+            <img src={`${import.meta.env.BASE_URL}img/logo.svg`} alt="Logo" />
           </Link>
 
           <span className={styles.burger} onClick={() => setIsMenuOpen(true)}>
-            <img src="/img/icons/burger.svg" alt="burger" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/icons/burger.svg`}
+              alt="burger"
+            />
           </span>
 
           <nav className={styles.nav}>
