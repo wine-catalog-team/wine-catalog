@@ -1,8 +1,14 @@
-import styles from './Contacts.module.scss';
+import styles from "./Contacts.module.scss";
 
 const Contacts = () => {
   return (
-    <section className={styles.contacts} id="contact">
+    <section
+      className={styles.contacts}
+      id="contact"
+      style={{
+        backgroundImage: `url(${import.meta.env.BASE_URL}img/contact-bg.png)`,
+      }}
+    >
       <div className="container">
         <h2>Маєте запитання чи пропозиції?</h2>
         <p>Розкажіть, що вас цікавить — і ми подбаємо про решту.</p>

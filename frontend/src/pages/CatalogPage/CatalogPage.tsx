@@ -173,7 +173,14 @@ export const CatalogPage = () => {
 
   return (
     <>
-      <section className={styles.heroSection}>
+      <section
+        className={styles.heroSection}
+        style={{
+          backgroundImage: `url(${
+            import.meta.env.BASE_URL
+          }img/wine-cellar.svg)`,
+        }}
+      >
         <div className={styles.catalog}>
           <CatalogHeader
             query={query}
