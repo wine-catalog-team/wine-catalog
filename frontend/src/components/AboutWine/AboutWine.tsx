@@ -1,8 +1,13 @@
-import styles from './AboutWine.module.scss';
+import styles from "./AboutWine.module.scss";
 
 const AboutWine = () => {
   return (
-    <section className={styles.about}>
+    <section
+      className={styles.about}
+      style={{
+        backgroundImage: `url(${import.meta.env.BASE_URL}img/field.png)`,
+      }}
+    >
       <div className={styles.overlay}></div>
       <div className="container">
         <h2>Де народжується вино</h2>
