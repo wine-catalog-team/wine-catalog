@@ -9,11 +9,11 @@ import "swiper/css/effect-coverflow";
 import { useRef } from "react";
 
 const images = [
-  "/img/events/event-1.png",
-  "/img/events/event-2.png",
-  "/img/events/event-3.png",
-  "/img/events/event-4.png",
-  "/img/events/event-5.png",
+  `${import.meta.env.BASE_URL}img/events/event-1.png`,
+  `${import.meta.env.BASE_URL}img/events/event-2.png`,
+  `${import.meta.env.BASE_URL}img/events/event-3.png`,
+  `${import.meta.env.BASE_URL}img/events/event-4.png`,
+  `${import.meta.env.BASE_URL}img/events/event-5.png`,
 ];
 
 const Events = () => {

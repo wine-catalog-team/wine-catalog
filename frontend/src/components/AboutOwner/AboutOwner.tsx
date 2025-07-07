@@ -1,4 +1,4 @@
-import styles from './AboutOwner.module.scss';
+import styles from "./AboutOwner.module.scss";
 
 const AboutOwner = () => {
   return (
@@ -14,21 +14,33 @@ const AboutOwner = () => {
 
         <div className={styles.gallery}>
           <div className={styles.left}>
-            <img src="/img/gallery/man-1.png" alt="man" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/gallery/man-1.png`}
+              alt="man"
+            />
 
             <article className={styles.quote}>
-              <img src="/img/icons/quote.svg" alt="quote" />
+              <img
+                src={`${import.meta.env.BASE_URL}img/icons/quote.svg`}
+                alt="quote"
+              />
 
               <p>Вино народжується в землі, але живе в серці людини.</p>
 
               <p className={styles.author}>Іван Аліменко</p>
             </article>
 
-            <img src="/img/gallery/man-2.png" alt="man" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/gallery/man-2.png`}
+              alt="man"
+            />
           </div>
 
           <div className={styles.right}>
-            <img src="/img/gallery/man-3.png" alt="man" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/gallery/man-3.png`}
+              alt="man"
+            />
           </div>
         </div>
       </div>

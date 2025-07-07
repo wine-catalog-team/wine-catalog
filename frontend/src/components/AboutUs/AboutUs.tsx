@@ -1,4 +1,4 @@
-import styles from './AboutUs.module.scss';
+import styles from "./AboutUs.module.scss";
 
 const AboutUs = () => {
   return (
@@ -35,7 +35,7 @@ const AboutUs = () => {
         </ul>
 
         <div className={styles.bottom}>
-          <img src="/img/grapes.png" alt="grapes" />
+          <img src={`${import.meta.env.BASE_URL}img/grapes.png`} alt="grapes" />
 
           <div>
             <p>

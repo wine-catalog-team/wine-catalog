@@ -1,4 +1,4 @@
-import styles from './Footer.module.scss';
+import styles from "./Footer.module.scss";
 
 const Footer = () => {
   return (
@@ -28,12 +28,18 @@ const Footer = () => {
             <ul className={styles.social}>
               <li>
                 <a href="#">
-                  <img src="/img/icons/facebook.svg" alt="Facebook" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}img/icons/facebook.svg`}
+                    alt="Facebook"
+                  />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="/img/icons/instagram.svg" alt="Instagram" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}img/icons/instagram.svg`}
+                    alt="Instagram"
+                  />
                 </a>
               </li>
             </ul>

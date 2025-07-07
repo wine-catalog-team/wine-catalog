@@ -4,7 +4,7 @@
 .heroSection {
   position: relative;
   z-index: 1;
-  background-image: url('/img/wine-cellar.svg');
+background-image: url('#{$base-url}img/wine-cellar.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
