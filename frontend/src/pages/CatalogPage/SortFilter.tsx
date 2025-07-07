@@ -46,7 +46,7 @@ export const SortFilter: React.FC<Props> = ({
             transition: "transform 0.3s ease-in-out",
           }}
         >
-          <img src="/img/arrow.svg" alt="arrow" />
+          <img src={`${import.meta.env.BASE_URL}img/arrow.svg`} alt="arrow" />
         </span>
       </button>
 

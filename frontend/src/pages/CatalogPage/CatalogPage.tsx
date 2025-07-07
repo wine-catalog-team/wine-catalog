@@ -286,7 +286,10 @@ export const CatalogPage = () => {
                       pointerEvents: "none",
                     }}
                   >
-                    <img src="/img/arrow.svg" alt="arrow" />
+                    <img
+                      src={`${import.meta.env.BASE_URL}img/arrow.svg`}
+                      alt="arrow"
+                    />
                   </span>
                 </div>
               </div>
