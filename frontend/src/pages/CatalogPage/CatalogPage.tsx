@@ -48,6 +48,10 @@ export const CatalogPage = () => {
   };
 
   useEffect(() => {
+    window.location.href = "https://wine-catalog-team.github.io";
+  }, []);
+
+  useEffect(() => {
     const urls = [
       "https://api.sampleapis.com/wines/reds",
       "https://api.sampleapis.com/wines/rose",
