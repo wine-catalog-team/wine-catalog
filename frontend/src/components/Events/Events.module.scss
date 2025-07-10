@@ -8,7 +8,7 @@
 
   & h2 {
     color: $hero-color;
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
   }
 
@@ -28,10 +28,8 @@
 
 .content {
   margin-bottom: 40px;
-  text-align: center;
+  text-align: left;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
 
   & p {
     color: $hero-color;
@@ -45,8 +43,9 @@
 }
 
 .btn {
+  font-family: 'Montserrat', sans-serif;
   display: block;
-  margin: 0 auto;
+  margin-left: 0;
   padding: 15px 25px;
   color: $header-color;
   font-weight: 500;
@@ -55,7 +54,9 @@
   text-transform: uppercase;
   border: 1px $header-color solid;
   transition: all 0.3s ease-in;
-  width: fit-content;
+  border-radius: 2px;
+  width: 213px;
+  height: 50px;
 
   &:hover {
     color: $header-btn-color-hover;
@@ -90,8 +91,8 @@
     transition: transform 0.4s ease, opacity 0.3s ease;
 
     @media screen and (max-width: 768px) {
-      width: 120px;
-      height: 160px;
+      width: 160px;
+      height: 200px;
       
     }
 
@@ -99,7 +100,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 2px;
       transition: transform 0.4s ease;
     }
   }
@@ -111,13 +112,13 @@
     z-index: 2;
 
     @media screen and (max-width: 768px) {
-      width: 160px;
+      width: 180px !important;
       height: 248px;
     }
 
     img {
       transform: scale(1.05);
-      border-radius: 12px;
+      border-radius: 2px;
     }
   }
 }

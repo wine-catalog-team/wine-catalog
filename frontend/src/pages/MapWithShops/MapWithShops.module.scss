@@ -3,18 +3,22 @@
   text-align: center;
 
   h1 {
+    font-family: "Montserrat", sans-serif;
+    text-align: left; 
     margin-top: 100px;
     font-size: 32px;
     margin-bottom: 12px;
-    font-weight: 600;
-    color: #333;
+    font-weight: 400;
+    color: #313131;
   }
 
   p {
+    font-family: "Montserrat", sans-serif;
+    text-align: left; 
     max-width: 600px;
-    margin: 0 auto 30px;
     font-size: 16px;
-    color: #666;
+    margin-bottom: 30px;
+    color: #313131;
   }
 
   .map {
