@@ -11,6 +11,6 @@ export interface Wine {
   type: string;
   sweetness?: string;
   grapeVariety?: string;
-  vintage?: string;
   price?: string;
+  vintage?: string;
 }
